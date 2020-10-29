@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -6,36 +6,41 @@ import { Router } from '@angular/router';
   templateUrl: './categoryhome.page.html',
   styleUrls: ['./categoryhome.page.scss'],
 })
-export class CategoryhomePage implements OnInit {
+export class CategoryhomePage {
   categories = [
     {
-      name: 'Restaurant',
+      name: 'Comida',
       icon: 'fas fa-utensils'
     },
     {
-      name: 'Super Mercado',
+      name: 'Bebidas',
       icon: 'fas fa-shopping-cart'
     },
     {
-      name: 'Colmado',
+      name: 'Salud',
       icon: 'fas fa-store'
     },
     {
-      name: 'Tienda',
+      name: 'Super',
       icon: 'fas fa-shopping-bag'
     },
     {
-      name: 'Liquor Store',
+      name: 'Regalos',
       icon: 'fas fa-glass-cheers'
+    },
+    {
+      name: 'Servicios',
+      icon: 'fas'
+    },
+    {
+      name: 'Tiendas',
+      icon: 'fas'
     }
   ];
 
   constructor(
     private router: Router
   ) { }
-
-  ngOnInit() {
-  }
 
   onClick(event) {
     const category = event.target.innerText.trim();

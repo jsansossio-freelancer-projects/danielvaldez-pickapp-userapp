@@ -81,6 +81,11 @@ export class ApisService {
     });
   }
 
+  public async getCategories() {
+    const { docs } = await this.adb.collection('categories').get().toPromise()
+    return docs.map(doc => doc.data());
+  }
+
   public register(email: string, password: string, fullname: string): Promise<any> {
     return new Promise<any>((resolve, reject) => {
       this.fireAuth.auth.createUserWithEmailAndPassword(email, password)
