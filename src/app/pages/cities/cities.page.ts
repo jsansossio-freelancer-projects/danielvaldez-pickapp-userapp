@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApisService } from 'src/app/services/apis.service';
 import { UtilService } from 'src/app/services/util.service';
-import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -24,6 +23,9 @@ export class CitiesPage implements OnInit {
     const lng = localStorage.getItem('language');
     if (!lng || lng === null) {
       localStorage.setItem('language', 'en');
+    }
+    if (localStorage.getItem('selectedCity')) {
+      this.navCtrl.navigateRoot(['/categoryhome']);
     }
     this.translate.use(localStorage.getItem('language'));
     this.getCities();
@@ -52,10 +54,9 @@ export class CitiesPage implements OnInit {
   goNext() {
     console.log('next', this.selectedCity);
     const data = this.cities.filter(x => x.id === this.selectedCity);
-    console.log(data);
     localStorage.setItem('selectedCity', JSON.stringify(data[0]));
     this.util.publishLocation('data');
-    this.navCtrl.navigateRoot(['/tabs']);
+    this.navCtrl.navigateRoot(['/categoryhome']);
   }
   getClassName() {
     return localStorage.getItem('language');

@@ -56,7 +56,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/categoryhome',
+    redirectTo: '/cities',
     pathMatch: 'full'
   }
 ];
