@@ -44,6 +44,7 @@ export class CategoryhomePage {
 
   onClick(event) {
     const category = event.target.innerText.trim();
-    this.router.navigate(['tabs/tab1'], { queryParams: { category } });
+    localStorage.setItem('currentCategory', category);
+    this.router.navigate(['tabs/tab1']);
   }
 }

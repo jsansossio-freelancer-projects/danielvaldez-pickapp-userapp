@@ -44,7 +44,6 @@ export class HomePage implements OnInit {
     private diagnostic: Diagnostic,
     public geolocation: Geolocation,
     private router: Router,
-    private route: ActivatedRoute,
     private api: ApisService,
     private util: UtilService,
     private apis: ApisService,
@@ -144,12 +143,7 @@ export class HomePage implements OnInit {
   }
 
   ngOnInit() {
-    console.log('init');
-    this.route.queryParams
-      .subscribe(params => {
-        this.category = params.category;
-      }
-    );
+    this.category = localStorage.getItem('currentCategory')
     const currentLng = this.util.getLanguage();
     console.log('current language --->', currentLng);
     this.chips = [this.util.translate('Ratting 4.0+'), this.util.translate('Fastest Delivery'), this.util.translate('Cost')];
